@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <title>Learning AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
+  <script src="maincontroller.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+</head>
+<style type="text/css">
+	.completed-true{
+		text-decoration: line-through; 
+	}
+	ul
+	{
+   list-style-type: none;
+ }
+ .custom-input{
+  width: 50%;
+ }
+</style>
+
+<body>
+<div id='content' ng-app='MyTutorialApp' ng-controller='MainController' class="container">
+  <div class="row">
+    <h1 class="text-center">Todo App Angular</h1> 
+  </div>
+    <div class="row">
+      <div class="form-group col-xs-offset-3 custom-input">
+        <input class="form-control" type='text' ng-model='searchText' placeholder="Search Todos"/>
+      </div>
+    </div>
+    <div class="row">
+     <div class="form-group col-xs-offset-3 custom-input">
+        <ul>
+          <li ng-repeat='todo in tasks | filter:searchText'>
+            <div class="row">
+            <div class="col-xs-8 col-md-6">
+              <input type="checkbox" ng-model="todo.completed">
+                <span class="completed-{{todo.completed}}">{{todo.name}}</span>
+            </div>
+            <div class="col-xs-4 col-md-6">
+              <span ng-click="remove(task)" class="label label-danger">Delete</span>
+            </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-xs-offset-3 custom-input">
+        <input class="form-control" type="text" placeholder="Type Todo Here" ng-model="newTodo" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group text-center">    
+        <button type="button" class="btn btn-primary" ng-click="addNew()">Add Todo</button>
+      </div>
+    </div>
+</div>
+</body>
+</html>
